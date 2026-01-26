@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+ 
+}
+
+model User {
+  id          String             @id @default(uuid()) @db.Uuid
+  name        String             @db.VarChar(100)
+  mobile      String             @unique @db.VarChar(15)
+  isOnboarded Boolean            @default(false) @map("is_onboarded")
+
+  profile     OnboardingProfile?
+
+  createdAt   DateTime           @default(now()) @map("created_at")
+  updatedAt   DateTime           @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model OnboardingProfile {
+  id                 String   @id @default(uuid()) @db.Uuid
+  userId             String   @unique @map("user_id") @db.Uuid
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Academics
+  educationLevel      String?  @map("education_level") @db.VarChar(50)
+  fieldOfStudy        String?  @map("field_of_study") @db.VarChar(100)
+  graduationYear      Int?     @map("graduation_year")
+
+  // Goals
+  targetDegree        String?  @map("target_degree") @db.VarChar(50)
+  targetIntake        String?  @map("target_intake") @db.VarChar(20)
+  preferredCountries  String[] @map("preferred_countries") // stored as Postgres text[]
+
+  // Budget
+  budgetRange         String?  @map("budget_range") @db.VarChar(50)
+  fundingPlan         String?  @map("funding_plan") @db.VarChar(30)
+
+  // Readiness
+  ieltsStatus         String?  @map("ielts_status") @db.VarChar(30)
+  greStatus           String?  @map("gre_status") @db.VarChar(30)
+  sopStatus           String?  @map("sop_status") @db.VarChar(30)
+
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  @@map("onboarding_profiles")
+}
