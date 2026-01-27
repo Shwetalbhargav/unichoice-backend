@@ -6,6 +6,10 @@ import usersModule from "./modules/users/users.module.js";
 import onboardingModule from "./modules/onboarding/onboarding.module.js";
 import universitiesModule from "./modules/universities/universities.module.js";
 import shortlistModule from "./modules/shortlist/shortlist.module.js";
+import lockModule from "./modules/lock/lock.module.js";
+import tasksModule from "./modules/tasks/tasks.module.js";
+import counsellorModule from "./modules/counsellor/counsellor.module.js";
+
 
 const app = express();
 
@@ -19,6 +23,9 @@ app.use("/api/users", usersModule);
 app.use("/api/onboarding", onboardingModule);
 app.use("/api/universities", universitiesModule);
 app.use("/api/shortlist", shortlistModule);
+app.use("/api/lock", lockModule);
+app.use("/api/tasks", tasksModule);
+app.use("/api/counsellor", counsellorModule);
 
 // health check (optional but useful)
 app.get("/health", (req, res) => {
