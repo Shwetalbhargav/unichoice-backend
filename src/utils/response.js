@@ -13,6 +13,8 @@ export const success = (
   });
 };
 
+export const ok = success;
+
 export const error = (
   res,
   message = "Something went wrong",
@@ -25,3 +27,5 @@ export const error = (
     errors,
   });
 };
+
+export const fail = error;
