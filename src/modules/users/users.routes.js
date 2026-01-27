@@ -1,7 +1,7 @@
 // src/modules/users/users.routes.js
 
 import { Router } from "express";
-import { requireAuth } from "../../middlewares/auth.js";
+import { requireAuth } from "../../middleware/auth.js";
 import { getMe } from "./users.controller.js";
 
 const router = Router();
