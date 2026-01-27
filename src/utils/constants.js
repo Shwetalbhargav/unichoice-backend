@@ -1,0 +1,32 @@
+// src/utils/constants.js
+
+export const COUNTRIES = {
+  USA: "USA",
+  UK: "UK",
+  CANADA: "CANADA",
+  GERMANY: "GERMANY",
+  AUSTRALIA: "AUSTRALIA",
+};
+
+export const FUNDING_PLANS = {
+  SELF_FUNDED: "SELF_FUNDED",
+  SCHOLARSHIP: "SCHOLARSHIP",
+  LOAN: "LOAN",
+};
+
+export const EXAM_STATUS = {
+  NOT_STARTED: "NOT_STARTED",
+  IN_PROGRESS: "IN_PROGRESS",
+  COMPLETED: "COMPLETED",
+};
+
+export const SOP_STATUS = {
+  NOT_STARTED: "NOT_STARTED",
+  DRAFT: "DRAFT",
+  READY: "READY",
+};
+
+export const USER_FLOW = {
+  ONBOARDING: "ONBOARDING",
+  DASHBOARD: "DASHBOARD",
+};
