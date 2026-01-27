@@ -4,7 +4,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
- 
 }
 
 enum Country {
@@ -39,87 +38,126 @@ enum RiskLevel {
   High
 }
 
+enum TaskStatus {
+  PENDING
+  DONE
+}
+
 model User {
-  id          String             @id @default(uuid()) @db.Uuid
-  name        String?            @db.VarChar(100)     // ✅ optional
-  mobile      String             @unique @db.VarChar(15)
-  isOnboarded Boolean            @default(false) @map("is_onboarded")
+  id          String  @id @default(uuid()) @db.Uuid
+  name        String? @db.VarChar(100) // ✅ optional
+  mobile      String  @unique @db.VarChar(15)
+  isOnboarded Boolean @default(false) @map("is_onboarded")
 
-  profile     OnboardingProfile?
+  profile OnboardingProfile?
 
-  createdAt   DateTime           @default(now()) @map("created_at")
-  updatedAt   DateTime           @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("users")
 }
 
 model OnboardingProfile {
-  id                 String      @id @default(uuid()) @db.Uuid
-  userId             String      @unique @map("user_id") @db.Uuid
-  user               User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id     String @id @default(uuid()) @db.Uuid
+  userId String @unique @map("user_id") @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   // Academics
-  educationLevel      String?     @map("education_level") @db.VarChar(50)
-  fieldOfStudy        String?     @map("field_of_study") @db.VarChar(100)
-  graduationYear      Int?        @map("graduation_year")
+  educationLevel String? @map("education_level") @db.VarChar(50)
+  fieldOfStudy   String? @map("field_of_study") @db.VarChar(100)
+  graduationYear Int?    @map("graduation_year")
 
   // Goals
-  targetDegree        String?     @map("target_degree") @db.VarChar(50)
-  targetIntake        String?     @map("target_intake") @db.VarChar(20)
+  targetDegree String? @map("target_degree") @db.VarChar(50)
+  targetIntake String? @map("target_intake") @db.VarChar(20)
 
-  preferredCountries  Country[]   @map("preferred_countries") 
+  preferredCountries Country[] @map("preferred_countries")
 
   // Budget
-  budgetRange         String?     @map("budget_range") @db.VarChar(50)
-  fundingPlan         FundingPlan? @map("funding_plan")      
+  budgetRange String?      @map("budget_range") @db.VarChar(50)
+  fundingPlan FundingPlan? @map("funding_plan")
 
   // Readiness
   ieltsStatus ExamStatus? @map("ielts_status")
   greStatus   ExamStatus? @map("gre_status")
   sopStatus   SopStatus?  @map("sop_status")
- 
 
-  completedAt         DateTime?   @map("completed_at")       
-  createdAt           DateTime    @default(now()) @map("created_at")
-  updatedAt           DateTime    @updatedAt @map("updated_at")
+  completedAt DateTime? @map("completed_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
 
   @@map("onboarding_profiles")
 }
 
-
-
 model University {
-  id               String   @id @default(cuid())
+  id String @id @default(cuid())
 
-  universityName   String   @map("university_name")
-  country          String
-  city             String
-  website          String?
-  language         String?
+  universityName String  @map("university_name")
+  country        String
+  city           String
+  website        String?
+  language       String?
 
-  ratingOutOf5     Float?   @map("rating_out_of_5")
-  rankingGlobal    Int?     @map("ranking_global")
-  numberOfCourses  Int?     @map("number_of_courses")
+  ratingOutOf5    Float? @map("rating_out_of_5")
+  rankingGlobal   Int?   @map("ranking_global")
+  numberOfCourses Int?   @map("number_of_courses")
 
-  topCourses       String[] @map("top_courses")
-  acceptanceRate   String?  @map("acceptance_rate") // keep as string like "8%"
+  topCourses     String[] @map("top_courses")
+  acceptanceRate String?  @map("acceptance_rate") // keep as string like "8%"
 
-  riskLevel        RiskLevel? @map("risk_level")
-  visa             String?
-  postStudyWork    String?  @map("post_study_work")
+  riskLevel     RiskLevel? @map("risk_level")
+  visa          String?
+  postStudyWork String?    @map("post_study_work")
 
-  scholarship      String[]
-  intake           String[]
+  scholarship String[]
+  intake      String[]
 
-  costCurrency     String?  @map("cost_currency")
-  tuition          Int?     @map("tuition")
-  living           Int?     @map("living")
+  costCurrency String? @map("cost_currency")
+  tuition      Int?    @map("tuition")
+  living       Int?    @map("living")
 
-  exams            Json?    // e.g. { "IELTS": "6.5+" }
+  exams Json? // e.g. { "IELTS": "6.5+" }
 
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([country, city])
   @@index([riskLevel])
+}
+
+model ShortlistItem {
+  id           String   @id @default(cuid())
+  userId       String   @db.Uuid
+  universityId String
+  bucket       String? // DREAM | TARGET | SAFE (optional)
+  createdAt    DateTime @default(now())
+
+  @@unique([userId, universityId])
+}
+
+model LockedUniversity {
+  id           String    @id @default(cuid())
+  userId       String    @db.Uuid
+  universityId String
+  isActive     Boolean   @default(true)
+  lockedAt     DateTime  @default(now())
+  unlockedAt   DateTime?
+
+  @@index([userId, isActive])
+}
+
+model Task {
+  id           String     @id @default(cuid())
+  userId       String     @db.Uuid
+  lockId       String? // link tasks to a specific lock (recommended)
+  universityId String? // optional convenience
+  title        String
+  description  String?
+  status       TaskStatus @default(PENDING)
+  dueAt        DateTime?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@index([userId, status])
+  @@index([lockId])
 }
