@@ -33,6 +33,12 @@ enum SopStatus {
   READY
 }
 
+enum RiskLevel {
+  Low
+  Medium
+  High
+}
+
 model User {
   id          String             @id @default(uuid()) @db.Uuid
   name        String?            @db.VarChar(100)     // ✅ optional
@@ -78,4 +84,42 @@ model OnboardingProfile {
   updatedAt           DateTime    @updatedAt @map("updated_at")
 
   @@map("onboarding_profiles")
+}
+
+
+
+model University {
+  id               String   @id @default(cuid())
+
+  universityName   String   @map("university_name")
+  country          String
+  city             String
+  website          String?
+  language         String?
+
+  ratingOutOf5     Float?   @map("rating_out_of_5")
+  rankingGlobal    Int?     @map("ranking_global")
+  numberOfCourses  Int?     @map("number_of_courses")
+
+  topCourses       String[] @map("top_courses")
+  acceptanceRate   String?  @map("acceptance_rate") // keep as string like "8%"
+
+  riskLevel        RiskLevel? @map("risk_level")
+  visa             String?
+  postStudyWork    String?  @map("post_study_work")
+
+  scholarship      String[]
+  intake           String[]
+
+  costCurrency     String?  @map("cost_currency")
+  tuition          Int?     @map("tuition")
+  living           Int?     @map("living")
+
+  exams            Json?    // e.g. { "IELTS": "6.5+" }
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([country, city])
+  @@index([riskLevel])
 }
