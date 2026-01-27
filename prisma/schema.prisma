@@ -61,18 +61,19 @@ model OnboardingProfile {
   targetDegree        String?     @map("target_degree") @db.VarChar(50)
   targetIntake        String?     @map("target_intake") @db.VarChar(20)
 
-  preferredCountries  Country[]   @map("preferred_countries") // ✅ restricted to 5
+  preferredCountries  Country[]   @map("preferred_countries") 
 
   // Budget
   budgetRange         String?     @map("budget_range") @db.VarChar(50)
-  fundingPlan         FundingPlan? @map("funding_plan")       // ✅ enum
+  fundingPlan         FundingPlan? @map("funding_plan")      
 
   // Readiness
-  ieltsStatus         ExamStatus? @map("ielts_status") @db.VarChar(30)
-  greStatus           ExamStatus? @map("gre_status") @db.VarChar(30)
-  sopStatus           SopStatus?  @map("sop_status") @db.VarChar(30)
+  ieltsStatus ExamStatus? @map("ielts_status")
+  greStatus   ExamStatus? @map("gre_status")
+  sopStatus   SopStatus?  @map("sop_status")
+ 
 
-  completedAt         DateTime?   @map("completed_at")         // ✅ helpful
+  completedAt         DateTime?   @map("completed_at")       
   createdAt           DateTime    @default(now()) @map("created_at")
   updatedAt           DateTime    @updatedAt @map("updated_at")
 
