@@ -8,11 +8,10 @@ export const getUserById = async (id) => {
     select: {
       id: true,
       name: true,
-      mobile: true,
-      email: true,
+      mobile: true,      
       isOnboarded: true,
       createdAt: true,
-      onboarding: true,
+      profile: true,
     },
   });
 };

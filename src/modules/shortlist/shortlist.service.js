@@ -1,5 +1,6 @@
+// src/modules/shortlist/shortlist.service.js
 import prisma from "../../config/db.js";
-import * as universitiesService from "../universities/universities.service.js";
+import universitiesService from "../universities/universities.service.js"; // ✅ default import
 
 export const assertOnboarded = async (userId) => {
   const user = await prisma.user.findUnique({ where: { id: userId } });
@@ -13,14 +14,14 @@ export const assertOnboarded = async (userId) => {
 export const listMine = async (userId) => {
   await assertOnboarded(userId);
 
-  return prisma.shortlistedUniversity.findMany({
+  return prisma.shortlistItem.findMany({
     where: { userId },
-    include: { university: true },
+    include: { university: true }, // ✅ works only after you added the relation in schema
     orderBy: { createdAt: "desc" },
   });
 };
 
-export const add = async ({ userId, universityId, bucket, notes }) => {
+export const add = async ({ userId, universityId, bucket }) => {
   await assertOnboarded(userId);
 
   // ensure uni exists
@@ -31,10 +32,10 @@ export const add = async ({ userId, universityId, bucket, notes }) => {
     throw err;
   }
 
-  return prisma.shortlistedUniversity.upsert({
+  return prisma.shortlistItem.upsert({
     where: { userId_universityId: { userId, universityId } },
-    update: { bucket: bucket ?? undefined, notes: notes ?? undefined },
-    create: { userId, universityId, bucket: bucket ?? null, notes: notes ?? null },
+    update: { bucket: bucket ?? undefined },
+    create: { userId, universityId, bucket: bucket ?? null },
     include: { university: true },
   });
 };
@@ -42,8 +43,7 @@ export const add = async ({ userId, universityId, bucket, notes }) => {
 export const remove = async ({ userId, universityId }) => {
   await assertOnboarded(userId);
 
-  // ignore if not found (or throw—your call)
-  return prisma.shortlistedUniversity.delete({
+  return prisma.shortlistItem.delete({
     where: { userId_universityId: { userId, universityId } },
   });
 };
@@ -51,7 +51,6 @@ export const remove = async ({ userId, universityId }) => {
 export const recommendations = async (userId, overrides = {}) => {
   await assertOnboarded(userId);
 
-  // IMPORTANT: your schema uses OnboardingProfile; make sure your onboarding service aligns with that.
   const profile = await prisma.onboardingProfile.findUnique({ where: { userId } });
   if (!profile) {
     const err = new Error("Onboarding profile not found.");
@@ -59,6 +58,6 @@ export const recommendations = async (userId, overrides = {}) => {
     throw err;
   }
 
-  // This uses your existing logic: Dream/Target/Safe + reasons
+  // ✅ now works because import is fixed
   return universitiesService.filterFromOnboarding(profile, overrides);
 };

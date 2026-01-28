@@ -1,5 +1,4 @@
 // src/modules/onboarding/onboarding.service.js
-
 import prisma from "../../config/db.js";
 
 const ALLOWED_COUNTRIES = ["USA", "UK", "CANADA", "GERMANY", "AUSTRALIA"];
@@ -20,39 +19,56 @@ const validateCountries = (preferredCountries) => {
   }
 };
 
-const isComplete = (payload) => {
+const mapPayloadToOnboarding = (payload) => ({
+  educationLevel: payload.educationLevel,
+  fieldOfStudy: payload.fieldOfStudy,
+  graduationYear: payload.graduationYear ?? null,
+
+  // map API names -> schema names
+  targetDegree: payload.intendedDegree ?? payload.targetDegree ?? null,
+  targetIntake: payload.targetIntakeYear
+    ? String(payload.targetIntakeYear)
+    : (payload.targetIntake ?? null),
+
+  preferredCountries: payload.preferredCountries,
+
+  fundingPlan: payload.fundingPlan ?? null,
+  budgetRange: payload.budgetPerYear
+    ? String(payload.budgetPerYear)
+    : (payload.budgetRange ?? null),
+
+  ieltsStatus: payload.ieltsStatus ?? null,
+  greStatus: payload.greStatus ?? null,
+  sopStatus: payload.sopStatus ?? null,
+});
+
+const isComplete = (data) => {
   return Boolean(
-    payload.educationLevel &&
-      payload.intendedDegree &&
-      payload.fieldOfStudy &&
-      payload.targetIntakeYear &&
-      Array.isArray(payload.preferredCountries) &&
-      payload.preferredCountries.length > 0 &&
-      payload.fundingPlan
+    data.educationLevel &&
+      data.targetDegree &&
+      data.fieldOfStudy &&
+      data.targetIntake &&
+      Array.isArray(data.preferredCountries) &&
+      data.preferredCountries.length > 0 &&
+      data.fundingPlan
   );
 };
 
 export const getOnboardingByUserId = async (userId) => {
-  return prisma.onboarding.findUnique({ where: { userId } });
+  return prisma.onboardingProfile.findUnique({ where: { userId } });
 };
 
 export const upsertOnboarding = async (userId, payload) => {
   if (payload.preferredCountries) validateCountries(payload.preferredCountries);
 
-  const complete = isComplete(payload);
+  const data = mapPayloadToOnboarding(payload);
+  const complete = isComplete(data);
 
   return prisma.$transaction(async (tx) => {
-    const onboarding = await tx.onboarding.upsert({
+    const onboarding = await tx.onboardingProfile.upsert({
       where: { userId },
-      create: {
-        userId,
-        ...payload,
-        completedAt: complete ? new Date() : null,
-      },
-      update: {
-        ...payload,
-        completedAt: complete ? new Date() : null,
-      },
+      create: { userId, ...data, completedAt: complete ? new Date() : null },
+      update: { ...data, completedAt: complete ? new Date() : null },
     });
 
     await tx.user.update({

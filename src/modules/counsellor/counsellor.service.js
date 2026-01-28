@@ -43,6 +43,13 @@ function buildNextAction(stage) {
   }
 }
 
+function costLevel(uni) {
+  const total = (uni.tuition ?? 0) + (uni.living ?? 0);
+  if (total <= 20000) return "LOW";
+  if (total <= 40000) return "MEDIUM";
+  return "HIGH";
+}
+
 function bucketize(universities = []) {
   // Uses acceptanceChance if present; otherwise put everything into TARGET.
   const buckets = { DREAM: [], TARGET: [], SAFE: [] };

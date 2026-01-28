@@ -121,6 +121,8 @@ model University {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  shortlistItems ShortlistItem[]
+
   @@index([country, city])
   @@index([riskLevel])
 }
@@ -129,8 +131,10 @@ model ShortlistItem {
   id           String   @id @default(cuid())
   userId       String   @db.Uuid
   universityId String
-  bucket       String? // DREAM | TARGET | SAFE (optional)
+  bucket       String?
   createdAt    DateTime @default(now())
+
+  university University @relation(fields: [universityId], references: [id])
 
   @@unique([userId, universityId])
 }
