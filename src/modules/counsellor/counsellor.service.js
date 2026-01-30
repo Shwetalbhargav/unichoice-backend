@@ -1,7 +1,7 @@
 import prisma from "../../config/db.js";
-import * as universitiesService from "../universities/universities.service.js";
-import * as shortlistService from "../shortlist/shortlist.service.js";
-import * as lockService from "../lock/lock.service.js";
+import  universitiesService from "../universities/universities.service.js";
+import  * as shortlistService from "../shortlist/shortlist.service.js";
+import  * as lockService from "../lock/lock.service.js";
 
 import { getGeminiModel } from "./gemini.client.js";
 import { extractJsonObject, safeAiFallback } from "./ai.json.js";
@@ -265,8 +265,15 @@ export const getRecommendations = async (userId, overrides = {}, userMessage = "
 
   // rec could be array OR object depending on your universitiesService.
   // Normalize to an array best-effort:
-  const universitiesArray = Array.isArray(rec) ? rec : (rec?.universities || rec?.results || []);
-  const buckets = bucketize(universitiesArray);
+  const universitiesArray = Array.isArray(rec)
+  ? rec
+  : (rec?.items || rec?.universities || rec?.results || []);
+
+  const buckets =
+    rec?.grouped && typeof rec.grouped === "object"
+      ? rec.grouped
+      : bucketize(universitiesArray);
+
 
   // Pull live counts for stage + next
   const shortlistCount = await prisma.shortlistedUniversity?.count?.({ where: { userId } }).catch(() => 0);
