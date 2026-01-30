@@ -4,235 +4,566 @@
     "country": "USA",
     "city": "Boston",
     "website": "https://www.bu.edu",
+    "language": "English",
     "rating_out_of_5": 4.6,
     "ranking_global": 93,
     "number_of_courses": 300,
-    "top_courses": ["Computer Science", "Data Science", "Business", "Engineering"],
+    "top_courses": [
+      "Computer Science",
+      "Data Science",
+      "Business Analytics",
+      "Engineering",
+      "Medicine",
+      "Management",
+      "PhD"
+    ],
     "acceptance_rate": "20%",
     "risk_level": "Medium",
     "visa": "F-1",
-    "post_study_work": "3 years OPT",
-    "scholarship": ["Merit", "Need-based"],
-    "intake": ["Fall", "Spring"],
-    "language": "English",
-    "cost": { "currency": "USD", "tuition": 58000, "living": 20000 },
-    "exams": { "IELTS": "6.5+", "GRE": "Optional" }
+    "post_study_work": "Up to 3 years (OPT)",
+    "scholarship": [
+      "Merit-based",
+      "Need-based"
+    ],
+    "intake": [
+      "Fall",
+      "Spring"
+    ],
+    "cost": {
+      "currency": "USD",
+      "tuition": 58000,
+      "living": 20000
+    },
+    "exams": {
+      "IELTS": "6.5+",
+      "TOEFL": "90+",
+      "GRE": "Optional"
+    }
   },
-  {
-    "university_name": "Northeastern University",
-    "country": "USA",
-    "city": "Boston",
-    "website": "https://www.northeastern.edu",
-    "rating_out_of_5": 4.5,
-    "ranking_global": 375,
-    "number_of_courses": 250,
-    "top_courses": ["Computer Science", "AI", "Engineering"],
-    "acceptance_rate": "18%",
-    "risk_level": "Medium",
-    "visa": "F-1",
-    "post_study_work": "3 years OPT",
-    "scholarship": ["Merit"],
-    "intake": ["Fall"],
-    "language": "English",
-    "cost": { "currency": "USD", "tuition": 56000, "living": 20000 },
-    "exams": { "IELTS": "6.5+", "GRE": "Optional" }
-  },
-  {
-    "university_name": "Suffolk University",
-    "country": "USA",
-    "city": "Boston",
-    "website": "https://www.suffolk.edu",
-    "rating_out_of_5": 4.0,
-    "ranking_global": 1200,
-    "number_of_courses": 120,
-    "top_courses": ["Business", "Law", "IT"],
-    "acceptance_rate": "83%",
-    "risk_level": "Low",
-    "visa": "F-1",
-    "post_study_work": "1–3 years OPT",
-    "scholarship": ["Merit"],
-    "intake": ["Fall", "Spring"],
-    "language": "English",
-    "cost": { "currency": "USD", "tuition": 42000, "living": 18000 },
-    "exams": { "IELTS": "6.0+", "GRE": "Not Required" }
-  }
-]
-[
   {
     "university_name": "University College London",
     "country": "UK",
     "city": "London",
     "website": "https://www.ucl.ac.uk",
+    "language": "English",
     "rating_out_of_5": 4.7,
     "ranking_global": 9,
     "number_of_courses": 250,
-    "top_courses": ["Computer Science", "AI", "Architecture"],
+    "top_courses": [
+      "Computer Science",
+      "AI",
+      "Architecture",
+      "Management",
+      "Medicine",
+      "PhD"
+    ],
     "acceptance_rate": "48%",
     "risk_level": "Medium",
     "visa": "UK Student Visa",
-    "post_study_work": "2 years PSW",
-    "scholarship": ["Merit"],
-    "intake": ["Fall"],
-    "language": "English",
-    "cost": { "currency": "GBP", "tuition": 28000, "living": 18000 },
-    "exams": { "IELTS": "6.5+" }
+    "post_study_work": "2 years (PSW)",
+    "scholarship": [
+      "Merit-based"
+    ],
+    "intake": [
+      "Fall"
+    ],
+    "cost": {
+      "currency": "GBP",
+      "tuition": 28000,
+      "living": 18000
+    },
+    "exams": {
+      "IELTS": "6.5+",
+      "TOEFL": "92+",
+      "GRE": "Not Required"
+    }
   },
-  {
-    "university_name": "King’s College London",
-    "country": "UK",
-    "city": "London",
-    "website": "https://www.kcl.ac.uk",
-    "rating_out_of_5": 4.6,
-    "ranking_global": 40,
-    "number_of_courses": 220,
-    "top_courses": ["Computer Science", "Management", "Health"],
-    "acceptance_rate": "50%",
-    "risk_level": "Medium",
-    "visa": "UK Student Visa",
-    "post_study_work": "2 years PSW",
-    "scholarship": ["Merit"],
-    "intake": ["Fall"],
-    "language": "English",
-    "cost": { "currency": "GBP", "tuition": 26000, "living": 17000 },
-    "exams": { "IELTS": "6.5+" }
-  },
-  {
-    "university_name": "University of Westminster",
-    "country": "UK",
-    "city": "London",
-    "website": "https://www.westminster.ac.uk",
-    "rating_out_of_5": 4.1,
-    "ranking_global": 800,
-    "number_of_courses": 180,
-    "top_courses": ["Business", "IT", "Media"],
-    "acceptance_rate": "75%",
-    "risk_level": "Low",
-    "visa": "UK Student Visa",
-    "post_study_work": "2 years PSW",
-    "scholarship": ["Merit"],
-    "intake": ["Fall", "Spring"],
-    "language": "English",
-    "cost": { "currency": "GBP", "tuition": 16000, "living": 16000 },
-    "exams": { "IELTS": "6.0+" }
-  }
-]
-[
   {
     "university_name": "University of Toronto",
     "country": "Canada",
     "city": "Toronto",
     "website": "https://www.utoronto.ca",
+    "language": "English",
     "rating_out_of_5": 4.6,
     "ranking_global": 21,
     "number_of_courses": 280,
-    "top_courses": ["Computer Science", "Engineering", "Business"],
+    "top_courses": [
+      "Computer Science",
+      "Engineering",
+      "Business",
+      "Medicine",
+      "Management",
+      "PhD"
+    ],
     "acceptance_rate": "43%",
     "risk_level": "Medium",
     "visa": "Study Permit",
-    "post_study_work": "3 years PGWP",
-    "scholarship": ["Merit"],
-    "intake": ["Fall"],
-    "language": "English",
-    "cost": { "currency": "CAD", "tuition": 45000, "living": 18000 },
-    "exams": { "IELTS": "6.5+" }
+    "post_study_work": "Up to 3 years (PGWP)",
+    "scholarship": [
+      "Merit-based"
+    ],
+    "intake": [
+      "Fall"
+    ],
+    "cost": {
+      "currency": "CAD",
+      "tuition": 45000,
+      "living": 18000
+    },
+    "exams": {
+      "IELTS": "6.5+",
+      "TOEFL": "100+",
+      "GRE": "Optional"
+    }
   },
-  {
-    "university_name": "Toronto Metropolitan University",
-    "country": "Canada",
-    "city": "Toronto",
-    "website": "https://www.torontomu.ca",
-    "rating_out_of_5": 4.3,
-    "ranking_global": 600,
-    "number_of_courses": 200,
-    "top_courses": ["IT", "Business", "Data Analytics"],
-    "acceptance_rate": "80%",
-    "risk_level": "Low",
-    "visa": "Study Permit",
-    "post_study_work": "3 years PGWP",
-    "scholarship": ["Merit"],
-    "intake": ["Fall"],
-    "language": "English",
-    "cost": { "currency": "CAD", "tuition": 32000, "living": 17000 },
-    "exams": { "IELTS": "6.5+" }
-  }
-]
-[
   {
     "university_name": "Technical University of Munich",
     "country": "Germany",
     "city": "Munich",
     "website": "https://www.tum.de",
+    "language": "English / German",
     "rating_out_of_5": 4.8,
     "ranking_global": 49,
     "number_of_courses": 200,
-    "top_courses": ["Engineering", "Computer Science", "AI"],
+    "top_courses": [
+      "Engineering",
+      "Computer Science",
+      "AI",
+      "Medicine",
+      "Management",
+      "PhD"
+    ],
     "acceptance_rate": "8%",
     "risk_level": "High",
     "visa": "German Student Visa",
     "post_study_work": "18 months",
-    "scholarship": ["DAAD"],
-    "intake": ["Winter", "Summer"],
-    "language": "English / German",
-    "cost": { "currency": "EUR", "tuition": 0, "living": 12000 },
-    "exams": { "IELTS": "6.5+" }
+    "scholarship": [
+      "DAAD"
+    ],
+    "intake": [
+      "Winter",
+      "Summer"
+    ],
+    "cost": {
+      "currency": "EUR",
+      "tuition": 0,
+      "living": 12000
+    },
+    "exams": {
+      "IELTS": "6.5+",
+      "TOEFL": "88+",
+      "GRE": "Not Required"
+    }
   },
-  {
-    "university_name": "LMU Munich",
-    "country": "Germany",
-    "city": "Munich",
-    "website": "https://www.lmu.de",
-    "rating_out_of_5": 4.7,
-    "ranking_global": 59,
-    "number_of_courses": 190,
-    "top_courses": ["Computer Science", "Economics"],
-    "acceptance_rate": "10%",
-    "risk_level": "High",
-    "visa": "German Student Visa",
-    "post_study_work": "18 months",
-    "scholarship": ["DAAD"],
-    "intake": ["Winter"],
-    "language": "German / English",
-    "cost": { "currency": "EUR", "tuition": 0, "living": 11500 },
-    "exams": { "IELTS": "6.5+" }
-  }
-]
-[
   {
     "university_name": "University of Melbourne",
     "country": "Australia",
     "city": "Melbourne",
     "website": "https://www.unimelb.edu.au",
+    "language": "English",
     "rating_out_of_5": 4.6,
     "ranking_global": 14,
     "number_of_courses": 220,
-    "top_courses": ["Computer Science", "Engineering", "Business"],
+    "top_courses": [
+      "Computer Science",
+      "Business Analytics",
+      "Engineering",
+      "Medicine",
+      "Management",
+      "PhD"
+    ],
     "acceptance_rate": "70%",
     "risk_level": "Low",
     "visa": "Subclass 500",
     "post_study_work": "2–3 years",
-    "scholarship": ["Merit"],
-    "intake": ["February", "July"],
-    "language": "English",
-    "cost": { "currency": "AUD", "tuition": 45000, "living": 20000 },
-    "exams": { "IELTS": "6.5+" }
+    "scholarship": [
+      "Merit-based"
+    ],
+    "intake": [
+      "February",
+      "July"
+    ],
+    "cost": {
+      "currency": "AUD",
+      "tuition": 45000,
+      "living": 20000
+    },
+    "exams": {
+      "IELTS": "6.5+",
+      "TOEFL": "79+",
+      "GRE": "Not Required"
+    }
   },
   {
-    "university_name": "RMIT University",
+    "university_name": "Johns Hopkins University",
+    "country": "USA",
+    "city": "Baltimore",
+    "website": "https://www.jhu.edu",
+    "language": "English",
+    "rating_out_of_5": 4.7,
+    "ranking_global": null,
+    "number_of_courses": 250,
+    "top_courses": [
+      "Medicine",
+      "Public Health",
+      "Biomedical Engineering",
+      "PhD"
+    ],
+    "acceptance_rate": "7%",
+    "risk_level": "High",
+    "visa": "F-1",
+    "post_study_work": "Up to 3 years (OPT)",
+    "scholarship": [
+      "Merit-based",
+      "Need-based"
+    ],
+    "intake": [
+      "Fall",
+      "Spring"
+    ],
+    "cost": {
+      "currency": "USD",
+      "tuition": 62000,
+      "living": 22000
+    },
+    "exams": {
+      "IELTS": "7.0+",
+      "TOEFL": "100+",
+      "GRE": "Optional"
+    }
+  },
+  {
+    "university_name": "University of Pennsylvania (Wharton)",
+    "country": "USA",
+    "city": "Philadelphia",
+    "website": "https://www.upenn.edu",
+    "language": "English",
+    "rating_out_of_5": 4.7,
+    "ranking_global": null,
+    "number_of_courses": 400,
+    "top_courses": [
+      "Management",
+      "Finance",
+      "Business Analytics",
+      "MBA",
+      "PhD"
+    ],
+    "acceptance_rate": "9%",
+    "risk_level": "High",
+    "visa": "F-1",
+    "post_study_work": "Up to 3 years (OPT)",
+    "scholarship": [
+      "Merit-based",
+      "Need-based"
+    ],
+    "intake": [
+      "Fall"
+    ],
+    "cost": {
+      "currency": "USD",
+      "tuition": 65000,
+      "living": 22000
+    },
+    "exams": {
+      "IELTS": "7.0+",
+      "TOEFL": "100+",
+      "GRE/GMAT": "Required for many programs"
+    }
+  },
+  {
+    "university_name": "University of Oxford",
+    "country": "UK",
+    "city": "Oxford",
+    "website": "https://www.ox.ac.uk",
+    "language": "English",
+    "rating_out_of_5": 4.8,
+    "ranking_global": null,
+    "number_of_courses": 350,
+    "top_courses": [
+      "Medicine",
+      "Management",
+      "Research",
+      "PhD"
+    ],
+    "acceptance_rate": "17%",
+    "risk_level": "High",
+    "visa": "UK Student Visa",
+    "post_study_work": "2 years (Graduate Route)",
+    "scholarship": [
+      "Merit-based",
+      "Need-based"
+    ],
+    "intake": [
+      "Fall"
+    ],
+    "cost": {
+      "currency": "GBP",
+      "tuition": 35000,
+      "living": 17000
+    },
+    "exams": {
+      "IELTS": "7.0+",
+      "TOEFL": "100+",
+      "GRE/GMAT": "Depends on course"
+    }
+  },
+  {
+    "university_name": "London Business School",
+    "country": "UK",
+    "city": "London",
+    "website": "https://www.london.edu",
+    "language": "English",
+    "rating_out_of_5": 4.7,
+    "ranking_global": null,
+    "number_of_courses": 60,
+    "top_courses": [
+      "Management",
+      "MBA",
+      "Finance",
+      "Executive Education",
+      "PhD"
+    ],
+    "acceptance_rate": "20%",
+    "risk_level": "Medium",
+    "visa": "UK Student Visa",
+    "post_study_work": "2 years (Graduate Route)",
+    "scholarship": [
+      "Merit-based"
+    ],
+    "intake": [
+      "Fall",
+      "Spring"
+    ],
+    "cost": {
+      "currency": "GBP",
+      "tuition": 50000,
+      "living": 20000
+    },
+    "exams": {
+      "IELTS": "7.0+",
+      "TOEFL": "100+",
+      "GMAT": "Recommended/Required for MBA"
+    }
+  },
+  {
+    "university_name": "McGill University",
+    "country": "Canada",
+    "city": "Montreal",
+    "website": "https://www.mcgill.ca",
+    "language": "English / French",
+    "rating_out_of_5": 4.6,
+    "ranking_global": null,
+    "number_of_courses": 300,
+    "top_courses": [
+      "Medicine",
+      "Management",
+      "Computer Science",
+      "PhD"
+    ],
+    "acceptance_rate": "46%",
+    "risk_level": "Medium",
+    "visa": "Study Permit",
+    "post_study_work": "Up to 3 years (PGWP)",
+    "scholarship": [
+      "Merit-based"
+    ],
+    "intake": [
+      "Fall"
+    ],
+    "cost": {
+      "currency": "CAD",
+      "tuition": 38000,
+      "living": 16000
+    },
+    "exams": {
+      "IELTS": "6.5+",
+      "TOEFL": "90+",
+      "GRE/GMAT": "Depends on program"
+    }
+  },
+  {
+    "university_name": "University of British Columbia",
+    "country": "Canada",
+    "city": "Vancouver",
+    "website": "https://www.ubc.ca",
+    "language": "English",
+    "rating_out_of_5": 4.6,
+    "ranking_global": null,
+    "number_of_courses": 320,
+    "top_courses": [
+      "Medicine",
+      "Management",
+      "Engineering",
+      "PhD"
+    ],
+    "acceptance_rate": "52%",
+    "risk_level": "Medium",
+    "visa": "Study Permit",
+    "post_study_work": "Up to 3 years (PGWP)",
+    "scholarship": [
+      "Merit-based"
+    ],
+    "intake": [
+      "Fall"
+    ],
+    "cost": {
+      "currency": "CAD",
+      "tuition": 42000,
+      "living": 19000
+    },
+    "exams": {
+      "IELTS": "6.5+",
+      "TOEFL": "90+",
+      "GRE/GMAT": "Depends on program"
+    }
+  },
+  {
+    "university_name": "Heidelberg University",
+    "country": "Germany",
+    "city": "Heidelberg",
+    "website": "https://www.uni-heidelberg.de",
+    "language": "German / English",
+    "rating_out_of_5": 4.5,
+    "ranking_global": null,
+    "number_of_courses": 200,
+    "top_courses": [
+      "Medicine",
+      "Life Sciences",
+      "Management",
+      "PhD"
+    ],
+    "acceptance_rate": "18%",
+    "risk_level": "Medium",
+    "visa": "German Student Visa",
+    "post_study_work": "18 months",
+    "scholarship": [
+      "DAAD"
+    ],
+    "intake": [
+      "Winter",
+      "Summer"
+    ],
+    "cost": {
+      "currency": "EUR",
+      "tuition": 1500,
+      "living": 12000
+    },
+    "exams": {
+      "IELTS": "6.5+",
+      "TOEFL": "88+",
+      "GRE": "Not Required"
+    }
+  },
+  {
+    "university_name": "University of Mannheim",
+    "country": "Germany",
+    "city": "Mannheim",
+    "website": "https://www.uni-mannheim.de",
+    "language": "German / English",
+    "rating_out_of_5": 4.5,
+    "ranking_global": null,
+    "number_of_courses": 180,
+    "top_courses": [
+      "Management",
+      "MBA",
+      "Economics",
+      "PhD"
+    ],
+    "acceptance_rate": "25%",
+    "risk_level": "Medium",
+    "visa": "German Student Visa",
+    "post_study_work": "18 months",
+    "scholarship": [
+      "DAAD",
+      "Merit-based"
+    ],
+    "intake": [
+      "Winter",
+      "Summer"
+    ],
+    "cost": {
+      "currency": "EUR",
+      "tuition": 1500,
+      "living": 12000
+    },
+    "exams": {
+      "IELTS": "6.5+",
+      "TOEFL": "88+",
+      "GMAT": "Sometimes required"
+    }
+  },
+  {
+    "university_name": "University of Sydney",
+    "country": "Australia",
+    "city": "Sydney",
+    "website": "https://www.sydney.edu.au",
+    "language": "English",
+    "rating_out_of_5": 4.6,
+    "ranking_global": null,
+    "number_of_courses": 300,
+    "top_courses": [
+      "Medicine",
+      "Management",
+      "Engineering",
+      "PhD"
+    ],
+    "acceptance_rate": "30%",
+    "risk_level": "Medium",
+    "visa": "Subclass 500",
+    "post_study_work": "2–4 years",
+    "scholarship": [
+      "Merit-based"
+    ],
+    "intake": [
+      "February",
+      "July"
+    ],
+    "cost": {
+      "currency": "AUD",
+      "tuition": 50000,
+      "living": 22000
+    },
+    "exams": {
+      "IELTS": "6.5+",
+      "TOEFL": "85+",
+      "GRE/GMAT": "Depends on program"
+    }
+  },
+  {
+    "university_name": "Monash University",
     "country": "Australia",
     "city": "Melbourne",
-    "website": "https://www.rmit.edu.au",
-    "rating_out_of_5": 4.4,
-    "ranking_global": 140,
-    "number_of_courses": 210,
-    "top_courses": ["IT", "Design", "Engineering"],
-    "acceptance_rate": "85%",
-    "risk_level": "Low",
-    "visa": "Subclass 500",
-    "post_study_work": "2–3 years",
-    "scholarship": ["Merit"],
-    "intake": ["February", "July"],
+    "website": "https://www.monash.edu",
     "language": "English",
-    "cost": { "currency": "AUD", "tuition": 38000, "living": 18000 },
-    "exams": { "IELTS": "6.5+" }
+    "rating_out_of_5": 4.5,
+    "ranking_global": null,
+    "number_of_courses": 280,
+    "top_courses": [
+      "Medicine",
+      "Management",
+      "Data Science",
+      "PhD"
+    ],
+    "acceptance_rate": "40%",
+    "risk_level": "Medium",
+    "visa": "Subclass 500",
+    "post_study_work": "2–4 years",
+    "scholarship": [
+      "Merit-based"
+    ],
+    "intake": [
+      "February",
+      "July"
+    ],
+    "cost": {
+      "currency": "AUD",
+      "tuition": 48000,
+      "living": 20000
+    },
+    "exams": {
+      "IELTS": "6.5+",
+      "TOEFL": "79+",
+      "GRE/GMAT": "Depends on program"
+    }
   }
 ]
