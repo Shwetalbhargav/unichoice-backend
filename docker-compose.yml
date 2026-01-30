@@ -1,46 +1,28 @@
-version: "3.9"
-
 services:
-  db:
-    image: postgres:16-alpine
-    container_name: unichoice_db
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: unichoice
-    ports:
-      - "5432:5432"
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d unichoice"]
-      interval: 5s
-      timeout: 3s
-      retries: 20
-
   api:
     build: .
     container_name: unichoice_api
     environment:
-      # App
       PORT: 3000
-      DATABASE_URL: postgresql://postgres:postgres@db:5432/unichoice?schema=public
+      DATABASE_URL: ${DATABASE_URL}
       JWT_SECRET: "change-me"
+      RUN_SEED: ${RUN_SEED}
 
-      # Google OAuth
       GOOGLE_CLIENT_ID: ""
       GOOGLE_CLIENT_SECRET: ""
       GOOGLE_CALLBACK_URL: ""
 
-      # Gemini
       GEMINI_API_KEY: ""
-    depends_on:
-      db:
-        condition: service_healthy
     ports:
       - "3000:3000"
-    # If your entry file differs, change it here:
-    command: sh -c "npx prisma migrate deploy && node src/server.js"
-
-volumes:
-  db_data:
+    command: >
+      sh -c "
+      npx prisma migrate deploy &&
+      if [ \"$RUN_SEED\" = \"true\" ]; then
+        echo '🌱 Running Prisma seed...';
+        npx prisma db seed;
+      else
+        echo '⏭️ Skipping seed';
+      fi &&
+      node src/server.js
+      "
